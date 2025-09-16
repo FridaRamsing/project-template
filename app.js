@@ -2,38 +2,34 @@
 
 window.addEventListener("load", initApp); // When the page is loaded, run initApp function
 
-// Function to initialize the Web App
+// #1: Initialize the app
 function initApp() {
   console.log("initApp: app.js is running 🎉"); // Log to the console that the app is running
-  getMovies();
+  getMovies(); // Fetch and display movies
 }
 
-// #1 Get Movies from JSON
-// Function to fetch movies from a JSON file
+// #2: Fetch movies from JSON and display them
 async function getMovies() {
-  const response = await fetch("./data/movies.json"); // Fetch the JSON file
-  const data = await response.json(); // Parse the JSON data
-  displayMovies(data); // Call displayMovies function with the fetched data
+  const response = await fetch("./data/movies.json");
+  const movies = await response.json();
+  displayMovies(movies);
 }
 
-// #2 Display Movies
-// Function to display movies
+// #3: Render all movies in the grid
 function displayMovies(movies) {
-  // Clear previous content
   document.querySelector("#movie-list").innerHTML = "";
-  // Loop through each movie and display it
   for (const movie of movies) {
-    displayMovie(movie); // Call displayMovie function for each movie
+    displayMovie(movie);
   }
 }
 
-// #3 Display Movie one movie
-// Function to display a single movie
+// #4: Render a single movie card and add event listeners
 function displayMovie(movie) {
-  document.querySelector("#movie-list").insertAdjacentHTML(
+  const movieList = document.querySelector("#movie-list");
+  movieList.insertAdjacentHTML(
     "beforeend",
     /*html*/ `
-      <article class="movie-card">
+      <article class="movie-card" tabindex="0">
         <img src="${movie.image}" alt="Poster of ${movie.title}" class="movie-poster" />
         <div class="movie-info">
           <h3>${movie.title} <span class="movie-year">(${movie.year})</span></h3>
@@ -44,4 +40,19 @@ function displayMovie(movie) {
       </article>
     `
   );
+  movieList.lastElementChild.addEventListener("click", () => showMovieDialog(movie));
+}
+
+// #5: Show movie details in a modal dialog
+function showMovieDialog(movie) {
+  document.querySelector("#dialog-content").innerHTML = /*html*/ `
+    <img src="${movie.image}" class="movie-poster" />
+    <h2>${movie.title} <span class="movie-year">(${movie.year})</span></h2>
+    <p class="movie-genre">${movie.genre.join(", ")}</p>
+    <p class="movie-rating">⭐ ${movie.rating}</p>
+    <p class="movie-director"><strong>Director:</strong> ${movie.director}</p>
+    <p><strong>Actors:</strong> ${movie.actors.join(", ")}</p>
+    <p class="movie-description">${movie.description}</p>
+  `;
+  document.querySelector("#movie-dialog").showModal();
 }
