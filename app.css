@@ -64,13 +64,12 @@ footer {
 .movie-card {
   background: var(--white);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(38, 76, 89, 0.08);
+  box-shadow: 0 2px 8px rgba(38, 76, 89, 0.25);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.15s, box-shadow 0.15s;
-  border: 1px solid var(--light-green);
 }
 .movie-card:hover {
   transform: translateY(-6px) scale(1.03);
