@@ -1,5 +1,4 @@
-"use strict"; // Use ECMAScript 5 strict mode in browsers that support it
-
+// #0: Listen for page load
 window.addEventListener("load", initApp); // When the page is loaded, run initApp function
 
 // #1: Initialize the app
@@ -19,7 +18,7 @@ async function getMovies() {
 function displayMovies(movies) {
   document.querySelector("#movie-list").innerHTML = "";
   for (const movie of movies) {
-    displayMovie(movie);
+    displayMovie(movie); // Render each movie card -> see step #4
   }
 }
 
@@ -40,7 +39,7 @@ function displayMovie(movie) {
       </article>
     `
   );
-  movieList.lastElementChild.addEventListener("click", () => showMovieDialog(movie));
+  movieList.lastElementChild.addEventListener("click", () => showMovieDialog(movie)); // Add click event to show movie details
 }
 
 // #5: Show movie details in a modal dialog
