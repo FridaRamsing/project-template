@@ -40,15 +40,14 @@ header {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 7rem 1rem 1rem 1rem; /* top padding for fixed header */
+  padding: 7rem 2rem 1rem; /* top padding for fixed header */
 }
 
 footer {
   text-align: center;
   padding: 1rem 0;
-  background-color: #f8f8f8;
-  color: #666;
-  border-top: 1px solid #e7e7e7;
+  background-color: var(--green);
+  color: var(--white);
 }
 
 /* =====================
@@ -78,7 +77,6 @@ footer {
 }
 .movie-poster {
   width: 100%;
-  height: 320px;
   object-fit: cover;
   border-bottom: 1px solid var(--light-green);
   background: var(--light-green);
@@ -121,15 +119,15 @@ footer {
    ===================== */
 dialog#movie-dialog {
   border: none;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(9, 47, 59, 0.18), 0 1.5px 6px rgba(38, 76, 89, 0.1);
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(9, 47, 59, 0.22), 0 2px 8px rgba(38, 76, 89, 0.1);
   padding: 0;
-  max-width: 420px;
-  width: 90vw;
-  background: #fff;
+  max-width: 700px;
+  background: linear-gradient(135deg, #fff 80%, #eaf3f5 100%);
   color: var(--green);
-  animation: fadeInDialog 0.2s;
+  animation: fadeInDialog 0.22s cubic-bezier(0.4, 1.3, 0.6, 1);
   overflow: visible;
+  position: relative;
 }
 @keyframes fadeInDialog {
   from {
@@ -145,55 +143,80 @@ dialog#movie-dialog::backdrop {
   background: rgba(38, 76, 89, 0.25);
   backdrop-filter: blur(2px);
 }
-#movie-dialog form {
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
+
 #close-dialog {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--text-color-danger);
-  color: var(--white);
+  top: 1.2rem;
+  right: 1.2rem;
+  background: #fff;
+  color: var(--text-color-danger);
   border: none;
   border-radius: 50%;
-  width: 2.2rem;
-  height: 2.2rem;
-  font-size: 1.2rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  font-size: 1.3rem;
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-  transition: background 0.15s;
+  box-shadow: 0 2px 8px rgba(38, 76, 89, 0.1);
+  border: 1.5px solid var(--light-green);
+  transition: background 0.18s, color 0.18s, border 0.18s;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #close-dialog:hover {
-  background: #b92d39;
+  background: var(--text-color-danger);
+  color: #fff;
+  border-color: var(--text-color-danger);
 }
 #dialog-content {
-  padding: 2.5rem 2rem 2rem 2rem;
+  padding: 2rem;
   min-width: 250px;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  max-width: 600px;
 }
+
 #dialog-content img.movie-poster {
-  max-width: 160px;
-  max-height: 240px;
-  float: right;
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(38, 76, 89, 0.1);
-  border: 1px solid #e7e7e7;
+  width: 100%;
+  margin: 0;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(38, 76, 89, 0.13);
+  border: 2px solid var(--light-green);
+}
+
+@media (max-width: 600px) {
+  #dialog-content img.movie-poster {
+    max-width: 180px;
+    margin: 0 auto 1.2rem auto;
+  }
+  #dialog-content .dialog-details {
+    grid-column: auto;
+    align-items: center;
+    text-align: center;
+  }
 }
 #dialog-content h2 {
-  margin-top: 0;
+  margin-top: 0.2em;
   color: var(--green);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  margin-bottom: 0.2em;
 }
 #dialog-content p {
-  margin: 0.5em 0;
+  margin: 0.4em 0;
   color: var(--dark-green);
-  font-size: 1.05em;
+  font-size: 1.08em;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.movie-description {
+  color: var(--text-color-dark);
+  font-size: 1.08em;
+  margin-top: 0.7em;
+  font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }

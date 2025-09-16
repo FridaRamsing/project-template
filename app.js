@@ -46,12 +46,14 @@ function displayMovie(movie) {
 function showMovieDialog(movie) {
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
     <img src="${movie.image}" class="movie-poster" />
-    <h2>${movie.title} <span class="movie-year">(${movie.year})</span></h2>
-    <p class="movie-genre">${movie.genre.join(", ")}</p>
-    <p class="movie-rating">⭐ ${movie.rating}</p>
-    <p class="movie-director"><strong>Director:</strong> ${movie.director}</p>
-    <p><strong>Actors:</strong> ${movie.actors.join(", ")}</p>
-    <p class="movie-description">${movie.description}</p>
+    <div class="dialog-details">
+      <h2>${movie.title} <span class="movie-year">(${movie.year})</span></h2>
+      <p class="movie-genre">${movie.genre.join(", ")}</p>
+      <p class="movie-rating">⭐ ${movie.rating}</p>
+      <p class="movie-director"><strong>Director:</strong> ${movie.director}</p>
+      <p><strong>Actors:</strong> ${movie.actors.join(", ")}</p>
+      <p class="movie-description">${movie.description}</p>
+    </div>
   `;
   document.querySelector("#movie-dialog").showModal();
 }
