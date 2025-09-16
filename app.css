@@ -1,7 +1,108 @@
+/* Color variables */
+:root {
+  --green: #264c59;
+  --dark-green: #092f3b;
+  --light-green: rgb(172, 198, 201);
+  --light-grey: #f1f1f4;
+  --text-color-danger: #f44250;
+  --text-color-dark: #333;
+  --text-color-light: #f1f1f1;
+  --white: #fff;
+}
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f0f0f0;
+  background-color: var(--light-green);
+  color: var(--text-color-dark);
+}
+
+header {
+  background-color: #264c59;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 1rem 1rem 1rem; /* top padding for fixed header */
+}
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #f8f8f8;
+  color: #666;
+  border-top: 1px solid #e7e7e7;
+}
+
+/* Movie grid styles */
+#movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.movie-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(38, 76, 89, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: 1px solid var(--light-green);
+}
+.movie-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(9, 47, 59, 0.13);
+}
+.movie-poster {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--light-green);
+  background: var(--light-green);
+}
+.movie-info {
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.movie-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--green);
+}
+.movie-year {
+  color: var(--dark-green);
+  font-size: 0.95em;
+  font-weight: normal;
+}
+.movie-genre {
+  color: var(--green);
+  font-size: 0.95em;
+  margin: 0.2em 0 0.5em 0;
+}
+.movie-rating {
+  color: var(--text-color-danger);
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+.movie-director {
+  color: var(--text-color-dark);
+  font-size: 0.95em;
 }

@@ -12,19 +12,33 @@ function initApp() {
 async function getMovies() {
   const response = await fetch("./data/movies.json"); // Fetch the JSON file
   const data = await response.json(); // Parse the JSON data
-  console.log(data); // Log the data to the console
   displayMovies(data); // Call displayMovies function with the fetched data
 }
 
-// Function to display movies (not implemented yet)
+// Function to display movies
 function displayMovies(movies) {
-  // This function will be implemented to display movies on the webpage
+  // Clear previous content
+  document.querySelector("#movie-list").innerHTML = "";
+  // Loop through each movie and display it
   for (const movie of movies) {
-    document.querySelector("#movie-list").insertAdjacentHTML(
-      "beforeend",
-      /*html*/ `
-        <p>${movie.title}</p>
-        `
-    ); // Display movie titles in the #movies element
+    displayMovie(movie); // Call displayMovie function for each movie
   }
+}
+
+function displayMovie(movie) {
+  // Function to display a single movie
+  document.querySelector("#movie-list").insertAdjacentHTML(
+    "beforeend",
+    /*html*/ `
+      <article class="movie-card">
+        <img src="${movie.image}" alt="Poster of ${movie.title}" class="movie-poster" />
+        <div class="movie-info">
+          <h3>${movie.title} <span class="movie-year">(${movie.year})</span></h3>
+          <p class="movie-genre">${movie.genre.join(", ")}</p>
+          <p class="movie-rating">⭐ ${movie.rating}</p>
+          <p class="movie-director"><strong>Director:</strong> ${movie.director}</p>
+        </div>
+      </article>
+    `
+  );
 }
