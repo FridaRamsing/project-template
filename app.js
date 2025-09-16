@@ -8,6 +8,7 @@ function initApp() {
   getMovies();
 }
 
+// #1 Get Movies from JSON
 // Function to fetch movies from a JSON file
 async function getMovies() {
   const response = await fetch("./data/movies.json"); // Fetch the JSON file
@@ -15,6 +16,7 @@ async function getMovies() {
   displayMovies(data); // Call displayMovies function with the fetched data
 }
 
+// #2 Display Movies
 // Function to display movies
 function displayMovies(movies) {
   // Clear previous content
@@ -25,8 +27,9 @@ function displayMovies(movies) {
   }
 }
 
+// #3 Display Movie one movie
+// Function to display a single movie
 function displayMovie(movie) {
-  // Function to display a single movie
   document.querySelector("#movie-list").insertAdjacentHTML(
     "beforeend",
     /*html*/ `
