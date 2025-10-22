@@ -1,0 +1,108 @@
+//"use strict"; // Enable strict mode for better error checking
+
+// #0: Start app når DOM er loaded (hele HTML siden er færdig med at indlæse)
+document.addEventListener("DOMContentLoaded", initApp);
+
+// #1: Initialize the app
+function initApp() {
+  console.log("initApp: Movie App is running 🎉"); // Log to the console that the app is running
+
+
+  // Vores første film-variabel
+const title = "The Matrix";
+console.log("Film titel:", title);
+
+// Numbers (tal)
+const year = 1999; // Helt tal - ingen anførselstegn
+const rating = 8.7; // Decimal tal - med punktum
+
+// Strings (tekst)
+const genre = "Action"; // Tekst - med anførselstegn
+const director = "Christopher Nolan";
+
+// Arrays (lister)
+const actors = ["Keanu Reeves", "Laurence Fishburne"]; // Liste af skuespillere
+
+// Mere tekst
+const description = "A computer programmer discovers..."; // Film beskrivelse
+const image = "matrix.jpg"; // Reference til film plakat
+
+// Test alle vores variabler
+console.log("År:", year);
+console.log("Rating:", rating);
+console.log("Genre:", genre);
+console.log("Instruktør:", director);
+console.log("Skuespillere:", actors);
+console.log("Beskrivelse:", description);
+console.log("Plakat:", image);
+
+// Prøv at ændre en const (dette vil give en fejl!)
+//movieTitle = "Inception"; // Fejl! Kan ikke ændre en const
+//movieYear = 2010; // Fejl! Kan ikke ændre en const//
+
+
+// let variabler KAN ændres
+let userRating = 4.5; // Start rating
+console.log("Start rating:", userRating);
+
+userRating = 5.0; // Opdater rating - dette virker fint med let!
+console.log("Ny rating:", userRating);
+
+// Flere eksempler på let
+let isFavorite = false;
+console.log("Er det en favoritfilm?", isFavorite);
+
+isFavorite = true; // Ændrer boolean værdi
+console.log("Efter opdatering:", isFavorite);
+
+let isViews = 1; //views
+console.log("mængden af views", isViews);
+}
+
+// String sammensætning (concatenation)
+const director = "Christopher Nolan";
+const movie = "Inception";
+const year = 2010;
+
+// Den gamle måde (med +)
+const oldWay = "Filmen " + movie + " fra " + year + " er instrueret af " + director;
+console.log("Gamle måde:", oldWay);
+
+// Den nye måde (med template literals ` `)
+const newWay = `Filmen ${movie} fra ${year} er instrueret af ${director}`;
+console.log("Nye måde:", newWay);
+
+// Regn med tal
+let rating = 8.5;
+rating = rating + 0.3; // Læg 0.3 til
+console.log("Ny rating:", rating);
+
+let views = 0;
+views = views + 1; // Tæl én visning
+console.log("Antal visninger:", views);
+
+// Genveje til matematik
+views += 1; // Samme som: views = views + 1
+rating += 0.1; // Samme som: rating = rating + 0.1
+console.log("Opdaterede værdier:", views, rating);
+
+// let = can be changed later
+let userRating = 4.5;
+console.log("Start rating:", userRating);
+
+// Change the value (this works!)
+userRating = 5.0;
+console.log("New rating:", userRating);
+
+// Old way (works, but messy)
+const oldMessage = "The movie " + movie + " is from " + year;
+console.log("Old way:", oldMessage);
+
+// Smart way with template literals
+const smartMessage = `The movie ${movie} is from ${year}`;
+console.log("Smart way:", smartMessage);
+
+
+// Multiple variables in same template literal
+const complexMessage = `Movie: ${movie}, Year: ${year}, Rating: ${rating}, Genre: ${genre}`;
+console.log("Complete info:", complexMessage);
